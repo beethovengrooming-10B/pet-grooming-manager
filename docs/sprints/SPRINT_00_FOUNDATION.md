@@ -57,6 +57,18 @@ pet-grooming-manager/
 - Lint superato.
 - Build di produzione superata.
 
+### Gestione clienti
+
+- Modello `Client` creato.
+- Migrazione Alembic per la tabella `clients`.
+- API per creazione, ricerca, modifica ed eliminazione.
+- Validazione degli input tramite Pydantic.
+- Test API per il ciclo CRUD.
+- Form frontend per creazione e modifica.
+- Ricerca clienti.
+- Eliminazione con conferma.
+- Flusso frontend → API → PostgreSQL verificato manualmente.
+
 ### Documentazione
 
 - README aggiornato con istruzioni di avvio.
@@ -69,13 +81,25 @@ pet-grooming-manager/
 | --- | --- |
 | `docker compose config` | Superata |
 | Connessione a PostgreSQL | Superata |
-| `uv run pytest` | 1 test superato |
+| `uv run pytest` | 8 test superati |
 | `npm run lint` | Superato |
-| `npm run build` | Superato |
+| `npm run build` | Superata |
 | Backend su browser | Verificato |
 | Frontend su browser | Verificato |
+| Creazione cliente | Verificata |
+| Ricerca cliente | Verificata |
+| Modifica cliente | Verificata |
+| Eliminazione cliente | Verificata |
 
 ## Commit
+
+Commit finale dello Sprint 0:
+
+~~~text
+6788c35 feat(sprint-0): complete foundation and clients management
+~~~
+
+Commit precedente incluso nella cronologia:
 
 ~~~text
 3eb15c5 chore: complete sprint 0 foundation
@@ -87,4 +111,4 @@ Il test backend mostra un avviso di deprecazione proveniente da una dipendenza F
 
 ## Prossimo sprint
 
-Sprint 1 — Gestione Clienti.
+Sprint 1 — Gestione Animali.

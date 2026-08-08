@@ -48,21 +48,34 @@ npm run dev
 
 - Applicazione: `http://localhost:3000`
 
-## Prossimo sprint
+## Funzionalità disponibili
 
-**Sprint 1 — Gestione Clienti**
+### Gestione clienti
 
-Obiettivo: definire e implementare la prima parte del gestionale clienti:
-
-- campi e regole del cliente;
-- modello database;
-- migrazione Alembic;
-- API CRUD e ricerca;
-- test API;
-- prima interfaccia frontend.
+- Creazione cliente.
+- Ricerca per nome, cognome o telefono.
+- Modifica cliente.
+- Eliminazione cliente con conferma.
+- Validazione dei dati tramite React Hook Form e Zod.
+- API REST collegate a PostgreSQL.
+- Test API backend.
+- Flusso completo frontend → API → PostgreSQL verificato manualmente.
 
 ## Problemi noti
 
 Nessun blocco attivo.
 
-Il test FastAPI mostra un avviso di deprecazione proveniente da una dipendenza esterna. Il test passa correttamente; l’avviso verrà rivalutato quando aggiorneremo le dipendenze del backend.
+Il test FastAPI mostra un avviso di deprecazione proveniente da una dipendenza esterna. I test passano correttamente; l’avviso verrà rivalutato quando aggiorneremo le dipendenze del backend.
+
+## Prossimo sprint
+
+**Sprint 1 — Gestione Animali**
+
+Obiettivo: gestire gli animali associati ai clienti:
+
+- modello database;
+- relazione cliente-animali;
+- campi dell’animale;
+- API CRUD;
+- test API;
+- interfaccia frontend.
