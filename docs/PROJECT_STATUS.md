@@ -1,81 +1,194 @@
-# Stato del progetto
+# Project Status
 
 ## Progetto
 
-**Pet Grooming Manager** è un gestionale interno per una toelettatura già operativa.
+**Pet Grooming Manager**
 
-## Stato attuale
+Gestionale reale per una toelettatura operativa.
 
-**Sprint 0 — Foundation Pack: completato**
+## Stato generale
 
-Il progetto ha una base locale funzionante e verificata:
+**Sprint 1 completato**
 
-- repository Git configurato;
-- PostgreSQL in Docker Compose;
-- backend FastAPI con endpoint health check;
-- test backend attivi;
-- frontend Next.js configurato;
-- lint e build frontend verificati.
+Il backend dispone ora delle funzionalità base per la gestione dei clienti e degli animali.
 
-## Come avviare il progetto
+## Sprint completati
 
-### Database
+### Sprint 0 - Foundation
 
-~~~bash
-cp .env.example .env
-docker compose up -d
-~~~
+**COMPLETATO**
 
-### Backend
+- Repository GitHub.
+- Struttura monorepo.
+- Directory `backend`.
+- Directory `frontend`.
+- Directory `docs`.
+- Directory `docker`.
+- Ambiente WSL2 e VS Code Remote WSL.
+- Configurazione iniziale del progetto.
 
-~~~bash
+Dettagli:
+
+```text
+docs/sprints/SPRINT_00_FOUNDATION.md
+```
+
+### Sprint 1 - Animal Management
+
+**COMPLETATO**
+
+- Modello `Animal`.
+- Relazione cliente-animale.
+- Creazione animali.
+- Lista animali per cliente.
+- Recupero singolo animale.
+- Modifica animali.
+- Eliminazione animali.
+- Validazione Pydantic.
+- Cascade delete.
+- Migrazione Alembic.
+- Test automatici.
+- Verifica manuale con curl.
+
+Dettagli:
+
+```text
+docs/sprints/SPRINT_01_ANIMALS.md
+```
+
+## API attualmente disponibili
+
+### Health check
+
+```text
+GET /health
+```
+
+### Clienti
+
+```text
+POST   /clients
+GET    /clients
+GET    /clients/{client_id}
+PUT    /clients/{client_id}
+DELETE /clients/{client_id}
+```
+
+### Animali
+
+```text
+POST   /clients/{client_id}/animals
+GET    /clients/{client_id}/animals
+GET    /animals/{animal_id}
+PUT    /animals/{animal_id}
+DELETE /animals/{animal_id}
+```
+
+## Test
+
+Comando ufficiale:
+
+```bash
 cd backend
-uv sync
-uv run uvicorn app.main:app --reload
-~~~
+uv run pytest
+```
 
-- API: `http://127.0.0.1:8000`
-- Documentazione API: `http://127.0.0.1:8000/docs`
-- Health check: `http://127.0.0.1:8000/health`
+Ultimo risultato verificato:
+
+```text
+17 passed, 1 warning
+```
+
+Il warning presente è non bloccante e riguarda una deprecation warning dell'integrazione Starlette/httpx usata da `TestClient`.
+
+## Verifica manuale
+
+Le API Animali sono state verificate manualmente con `curl`.
+
+Verifiche completate:
+
+- Creazione animale.
+- Recupero animale.
+- Modifica animale.
+- Lista animali.
+- Eliminazione animale.
+- Risposta `404` per risorsa inesistente.
+- Risposta `422` per dati non validi.
+
+## Configurazione tecnica
 
 ### Frontend
 
-~~~bash
-cd frontend
-npm install
-npm run dev
-~~~
+- Next.js.
+- React.
+- TypeScript.
+- Tailwind CSS.
+- shadcn/ui.
+- TanStack Query.
+- React Hook Form.
+- Zod.
 
-- Applicazione: `http://localhost:3000`
+### Backend
 
-## Funzionalità disponibili
+- FastAPI.
+- SQLAlchemy 2.
+- Alembic.
+- Pydantic.
+- uv.
 
-### Gestione clienti
+### Database
 
-- Creazione cliente.
-- Ricerca per nome, cognome o telefono.
-- Modifica cliente.
-- Eliminazione cliente con conferma.
-- Validazione dei dati tramite React Hook Form e Zod.
-- API REST collegate a PostgreSQL.
-- Test API backend.
-- Flusso completo frontend → API → PostgreSQL verificato manualmente.
+- PostgreSQL.
 
-## Problemi noti
+### Testing
 
-Nessun blocco attivo.
+- pytest.
+- Playwright.
+- Bruno.
+- curl per verifiche manuali.
 
-Il test FastAPI mostra un avviso di deprecazione proveniente da una dipendenza esterna. I test passano correttamente; l’avviso verrà rivalutato quando aggiorneremo le dipendenze del backend.
+### Hosting previsto
 
-## Prossimo sprint
+- Vercel.
+- Railway oppure Render.
 
-**Sprint 1 — Gestione Animali**
+## Regole di progetto
 
-Obiettivo: gestire gli animali associati ai clienti:
+- MVP first.
+- Una feature alla volta.
+- Nessun overengineering.
+- API RESTful.
+- Database progettato con cura.
+- Migrazioni tramite Alembic.
+- Test dove portano valore.
+- Documentazione aggiornata a ogni sprint.
+- Nessuna funzionalità fuori scope senza decisione esplicita.
 
-- modello database;
-- relazione cliente-animali;
-- campi dell’animale;
-- API CRUD;
-- test API;
-- interfaccia frontend.
+## Backlog futuro
+
+Non implementare ora:
+
+- Dashboard.
+- Statistiche.
+- Clienti abituali.
+- Clienti persi.
+- Lista d'attesa.
+- WhatsApp.
+- Pagamenti.
+- AI.
+- Report.
+
+## Prossimo sprint proposto
+
+### Sprint 2 - Frontend Foundation
+
+Possibili attività:
+
+- Configurazione iniziale Next.js.
+- Layout principale.
+- Configurazione Tailwind e shadcn/ui.
+- Client API.
+- Prima pagina clienti.
+- Collegamento frontend-backend.
+
+Lo scope definitivo deve essere approvato prima dell'implementazione.
